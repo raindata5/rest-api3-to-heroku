@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_restful import Resource, Api
 from flask_jwt import JWT
@@ -8,7 +9,7 @@ from resources.language import Language, LanguageList
 from resources.languagefamily import LanguageFamilyList, LanguageFamily
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flask-languages.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.envrion.get('DATABASE_URL', 'sqlite:///flask-languages.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'burbuja'
 

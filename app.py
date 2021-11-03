@@ -4,7 +4,7 @@ from flask_jwt import JWT
 from security import authenticate, identity  # using JWT to make call to these formulas
 from resources.user import UserRegister
 from resources.language import Language, LanguageList
-from sqlalc import db
+# from sqlalc import db
 from resources.languagefamily import LanguageFamilyList, LanguageFamily
 
 app = Flask(__name__)
@@ -15,9 +15,9 @@ app.secret_key = 'burbuja'
 api = Api(app)
 
 
-@app.before_first_request  # why?
-def create_tables():
-    db.create_all()
+# @app.before_first_request  # why?
+# def create_tables():
+#     db.create_all()
 
 
 jwt = JWT(app, authenticate, identity)
